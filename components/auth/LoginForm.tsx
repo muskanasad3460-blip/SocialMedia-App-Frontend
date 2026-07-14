@@ -27,14 +27,9 @@ export default function LoginForm({ isRegister }: LoginFormProps) {
   const { mutate, isPending } = useMutation({
     mutationFn: loginUser,
 
-    onSuccess: (data: any) => {
-      localStorage.setItem("accessToken", data.tokens.access.token);
-
-      localStorage.setItem("refreshToken", data.tokens.refresh.token);
-
-      toast.success(data.message);
-
-      router.push("/profile");
+    onSuccess: () => {
+      toast.success("Login successful");
+      router.push("/");
     },
 
     onError: (error: Error) => {

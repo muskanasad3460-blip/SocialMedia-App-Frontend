@@ -16,14 +16,14 @@ export default function OTPForm() {
   const { mutate, isPending } = useMutation({
     mutationFn: verifyOTP,
 
-    onSuccess: (data) => {
+    onSuccess: () => {
       // toast.success(data.message);
       // Save Tokens
-      localStorage.setItem("accessToken", data.tokens.access.token);
+      // localStorage.setItem("accessToken", data.tokens.access.token);
 
-      localStorage.setItem("refreshToken", data.tokens.refresh.token);
+      // localStorage.setItem("refreshToken", data.tokens.refresh.token);
 
-      toast.success(data.message);
+      toast.success("good");
       router.push("/"); // ya /login
     },
 

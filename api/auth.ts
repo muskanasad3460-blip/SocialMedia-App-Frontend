@@ -10,6 +10,7 @@ export async function registerUser(data: {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(data),
   });
   const result = await response.json();
@@ -26,6 +27,7 @@ export async function verifyOTP(data: { email: string; otp: string }) {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(data),
   });
   const result = await response.json();
@@ -41,6 +43,7 @@ export async function loginUser(data: { email: string; password: string }) {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(data),
   });
   const result = await response.json();
