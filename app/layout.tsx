@@ -4,6 +4,8 @@ import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProviders";
 import ToastProvider from "@/providers/ToastProvider";
 import Navbar from "@/components/navbar/Navbar";
+import "react-photo-album/styles.css";
+import "yet-another-react-lightbox/styles.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

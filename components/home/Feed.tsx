@@ -1,73 +1,30 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { getPosts } from "@/api/post";
 import PostCard from "./PostCard";
-
-const posts = [
-  {
-    id: 1,
-    user: {
-      name: "Muskan Asad",
-      avatar: "",
-    },
-    content: "Building my first social media app 🚀",
-    image: "",
-    likes: 12,
-    comments: 3,
-    createdAt: "2 hours ago",
-  },
-
-  {
-    id: 2,
-    user: {
-      name: "Ali Ahmed",
-      avatar: "",
-    },
-    content: "Learning Next.js and Prisma 🔥",
-    image: "",
-    likes: 20,
-    comments: 5,
-    createdAt: "5 hours ago",
-  },
-  {
-    id: 2,
-    user: {
-      name: "Ali Ahmed",
-      avatar: "",
-    },
-    content: "Learning Next.js and Prisma 🔥",
-    image: "",
-    likes: 20,
-    comments: 5,
-    createdAt: "5 hours ago",
-  },
-  {
-    id: 2,
-    user: {
-      name: "Ali Ahmed",
-      avatar: "",
-    },
-    content: "Learning Next.js and Prisma 🔥",
-    image: "",
-    likes: 20,
-    comments: 5,
-    createdAt: "5 hours ago",
-  },
-  {
-    id: 2,
-    user: {
-      name: "Ali Ahmed",
-      avatar: "",
-    },
-    content: "Learning Next.js and Prisma 🔥",
-    image: "",
-    likes: 20,
-    comments: 5,
-    createdAt: "5 hours ago",
-  },
-];
+import toast from "react-hot-toast";
 
 export default function Feed() {
+  const [posts, setPosts] = useState([]);
+
+  const fetchPosts = async () => {
+    try {
+      const response = await getPosts();
+      setPosts(response.data);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to load posts");
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
   return (
     <div className="space-y-5">
-      {posts.map((post) => (
+      {posts.map((post: any) => (
         <PostCard key={post.id} post={post} />
       ))}
     </div>
